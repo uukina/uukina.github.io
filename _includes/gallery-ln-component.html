@@ -1,0 +1,4 @@
+<h1 class="title">Official Light Novel Illustrations</h1>
+{%- for ln in site.data.ln_art_volumes -%}
+    {% include ln-folder-gallery.html volume_name=ln.name folder_name=ln.folder %}
+{%- endfor -%}

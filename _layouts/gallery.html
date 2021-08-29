@@ -1,0 +1,30 @@
+---
+layout: default
+fulljQuery: true
+headers: |
+    <script src="/assets/js/masonry.pkgd.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.min.css">
+    <script src="/assets/js/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/gallery.css" type="text/css">
+    <script src="/assets/js/lazyload.js"></script>
+---
+<section class="mainContent">
+    <div id="content" class="container-fluid">
+        {{ content }}
+    </div>
+</section>
+<script>
+lazyload();
+var imageContainers = document.getElementsByClassName("row");
+for (let elm of imageContainers) {
+    const $container = $(elm).masonry({
+        itemSelector: '.grid-item',
+    });
+    $('.lazyload', $container).each(function(n, img) {
+        $(img).on('load', function() {
+            $(img).css('opacity', '1');
+            $container.masonry('layout');
+        });
+    });
+}
+</script>

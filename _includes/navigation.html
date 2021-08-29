@@ -1,0 +1,103 @@
+<header class="navHeader">
+  <nav class="navbar navbar-expand-lg navbar-light justify-content-between nvcustom">
+    <a class="navbar-brand" href="/">
+      <img id="logo" alt="Kei-Camp" align="left" src="{{ site.url }}/assets/images/icon.png"/>
+      <p class="brandTitle">Kei-Camp</p>
+      <p class="brandDescription">A site dedicated to best girl Kei</p>
+    </a> 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav ml-auto">
+        {%- for item in site.data.navigation -%}
+        {%- assign activePage = false -%}
+        {%- assign activeNavBar = false -%}
+        {%- if item.dropdown -%}
+            {% assign startsWith = page.url | split:item.link %}
+            {%- if startsWith[0] == "" -%}{%- assign activeNavBar = true -%}{%- endif -%}
+            <li class="nav-item dropdown active">
+              <a class="nav-link navLinkContainer dropdown-toggle" href="#" id="navbarDropdown-{{ forloop.index }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="navbarLinkText">
+                  {{ item.name }}
+                  <div class="linkBorder" {% if activeNavBar %}style="borderBottom:1px solid; width:100%;"{%- endif -%}></div>
+                </span>
+                </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown-{{ forloop.index }}">
+              {%- for i2 in item.dropdown -%}
+                {%- assign activePage = false -%}
+                {%- if page.url == i2.link -%}{%- assign activePage = true -%}{%- endif -%}
+                <a class="dropdown-item {% if activePage %}selected-dropdown{%- endif -%}" href="{{ i2.link | remove: '.html' }}">{{ i2.name }}</a>
+              {%- endfor -%}
+              </div>
+            </li>
+        {%- else -%}
+          {%- if page.url == item.link -%}{%- assign activePage = true -%}{%- endif -%}
+          <li class="nav-item active">
+            <a href="{{ item.link | remove: '.html' }}" class="nav-link navLinkContainer">
+              <span class="navbarLinkText">
+                {{ item.name }}
+                <div class="linkBorder" {% if activePage %}style="borderBottom:1px solid; width:100%;"{%- endif -%}></div>
+              </span>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- endfor -%}
+        <li id="themeSwitcher" class="nav-item active" style="margin-top: 6px;margin-left: 10px;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="themeToggle"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="transform:rotate(40deg); color:var(--theme-main-color);"
+          >
+            <mask id="mask">
+              <rect x="0" y="0" width="100%" height="100%" fill="white" /> 
+              <circle id="innerCircle" cx="12" cy="4" r="9" fill="black" style="color:white"/>    
+            </mask>
+            <circle id="actualCircle" fill="var(--theme-main-color)" cx="12" cy="12" r="9" mask="url(#mask)" style="color:var(--theme-main-color)" />
+            <g id="sunDashes" stroke="currentColor">
+              <line opacity=0 x1="12" y1="1" x2="12" y2="3" />
+              <line opacity=0 x1="12" y1="21" x2="12" y2="23" />
+              <line opacity=0 x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line opacity=0 x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line opacity=0 x1="1" y1="12" x2="3" y2="12" />
+              <line opacity=0 x1="21" y1="12" x2="23" y2="12" />
+              <line opacity=0 x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line opacity=0 x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </g>
+          </svg>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    #themeSwitcher {display:none;}
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+<script src="/assets/js/theme.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  document.body.style.visibility = 'visible';
+  document.body.style.opacity = 1;
+});
+</script>
