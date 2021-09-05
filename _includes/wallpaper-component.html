@@ -5,9 +5,9 @@
     {%- if image.path contains "assets/images/wallpaper" -%}
         {%- assign has_source = false -%}
         {%- assign source = image -%}
-        {%- if site.data.edits_sources[image.name] -%}
+        {%- if site.data.wallpaper_sources[image.name] -%}
             {%- assign has_source = true -%}
-            {%- assign source = site.data.edits_sources[image.name] -%}
+            {%- assign source = site.data.wallpaper_sources[image.name] -%}
         {%- endif -%}
         <div class="col-sm-3 grid-item">
             <div class="shadow mr-2 mb-2 paperImage">
@@ -30,7 +30,7 @@
         </div>
     {%- endif -%}
     {%- endfor -%}
-    {%- for vid in site.data.edits_videos_sources -%}
+    {%- for vid in site.data.wallpaper_videos_sources -%}
         <div class="col-sm-3 grid-item">
             <div class="shadow mr-2 mb-2 paperImage">
                 <a data-fancybox="gallery" data-caption="<a target='_blank' href='{{ vid.link }}'>Direct Link</a>
