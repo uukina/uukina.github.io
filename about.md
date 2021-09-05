@@ -10,6 +10,6 @@ title: About
         <br>
         <p>Any question feel free to DM</p>
         <p>Discord: Uuk#4046</p>
-        <p>Telegram: <a href="https://t.me/siestamaidbot">@SiestaMaidBot</a> 
+        <p>Telegram: <a href="https://t.me/siestamaidbot">@SiestaMaidBot</a></p>
     </div>
 </section>

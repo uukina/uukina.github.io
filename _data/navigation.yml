@@ -1,5 +1,5 @@
-- name: Join Us
-  link: /join
+#- name: Join Us
+#  link: /join
 #- name: Intro
 #  link: /intro
 #- name: Short Stories
@@ -21,5 +21,7 @@
 #      link: /gallery-fanart
 #- name: Fanfics
 #  link: /fanfics
+- name: Database
+  link: /database
 - name: About
   link: /about
