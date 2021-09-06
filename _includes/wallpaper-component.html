@@ -1,50 +1,16 @@
-<h1 class="title">Wallpaper</h1>
+<h1 class="title">Random Wallpaper</h1>
 <div class="images-container">
-    <div class="grid row center-block" id="editsRow">
+    <div class="grid row center-block" id="officialRow">
     {%- for image in site.static_files -%}
-    {%- if image.path contains "assets/images/wallpaper" -%}
-        {%- assign has_source = false -%}
-        {%- assign source = image -%}
-        {%- if site.data.wallpaper_sources[image.name] -%}
-            {%- assign has_source = true -%}
-            {%- assign source = site.data.wallpaper_sources[image.name] -%}
-        {%- endif -%}
+    {%- if image.path contains "assets/images/official" -%}
         <div class="col-sm-3 grid-item">
             <div class="shadow mr-2 mb-2 paperImage">
-                <a data-fancybox="gallery" data-caption="<a target='_blank' href='{{ site.baseurl }}{{ image.path }}'>Full Image</a>
-                {%- if has_source -%}
-                    {%- if source.artist -%}
-                        </br> {{ source.artist }}
-                    {% elsif source.sources %}
-                        - Sources: {% for src in source.sources %} <a target='_blank' href='{{ src }}'>{{ forloop.index }}</a>{% endfor %}
-                    {% elsif source.link %}
-                        - <a target='_blank' href='{{ source.link }}'>Source</a>
-                    {%- endif -%}
-                    {%- if source.edited -%}
-                        </br> Edited by: {{ source.edited }}
-                    {%- endif -%}
-                {%- endif -%}" href="{{ site.baseurl }}{{ image.path }}">
-                    <img class="pic lazyload" data-src="{{ site.baseurl }}/assets/images/thumbnails/wallpaper/{% if image.extname == ".png" or image.extname == ".gif" %}{{ image.basename | append: ".jpg" }}{% else %}{{ image.name }}{% endif %}">
+                <a data-fancybox="gallery" data-caption="<a target='_blank' href='{{ site.baseurl }}{{ image.path }}'>Full Image</a>" href="{{ site.baseurl }}{{ image.path}}">
+                    <img class="pic lazyload" data-src="{{ site.baseurl }}/assets/images/thumbnails/official/{{ image.basename | append: ".jpg" }}">
                 </a>
             </div>
         </div>
     {%- endif -%}
-    {%- endfor -%}
-    {%- for vid in site.data.wallpaper_videos_sources -%}
-        <div class="col-sm-3 grid-item">
-            <div class="shadow mr-2 mb-2 paperImage">
-                <a data-fancybox="gallery" data-caption="<a target='_blank' href='{{ vid.link }}'>Direct Link</a>
-                {%- if vid.artist -%}
-                    </br> {{ source.artist }}
-                {%- endif -%}
-                {%- if vid.edited -%}
-                    </br> Edited by: {{ vid.edited }}
-                {%- endif -%}
-                " href="{{ vid.link }}">
-                    <img class="pic lazyload" data-src="{{ vid.thumbnail }}">
-                </a>
-            </div>
-        </div>
     {%- endfor -%}
     </div>
 </div>
