@@ -9,7 +9,7 @@ title: About
         <p>Sebenarnya gatau ini web mau diisi apa, mungkin untuk sementara gini aja dulu</p>
         <br>
         <p>Any question feel free to DM</p>
-        <p>Discord: Uuk#4046</p>
+        <p>Discord: Uuk#4481</p>
         <p>Telegram: <a href="https://t.me/siestamaidbot">@SiestaMaidBot</a></p>
     </div>
 </section>
